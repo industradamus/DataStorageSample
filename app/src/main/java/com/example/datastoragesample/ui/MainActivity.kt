@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRecycler() {
-        imageRecycler.adapter = imageAdapter
+        imageRecycler.adapter = imageAdapter.withLoadStateFooter(LoadingAdapter())
 
         Pager(
             config = PagingConfig(
@@ -64,6 +64,6 @@ class MainActivity : AppCompatActivity() {
     companion object {
 
         private const val PAGE_SIZE = 15
-        private const val PREFETCH_DISTANCE = 5
+        private const val PREFETCH_DISTANCE = 1
     }
 }

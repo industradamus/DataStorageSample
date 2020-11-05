@@ -6,6 +6,7 @@ import com.example.datastoragesample.models.PixelsResponse
 import com.example.datastoragesample.network.PixelsApi
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class PhotoPaginationDataSource(
     private val api: PixelsApi
@@ -16,6 +17,7 @@ class PhotoPaginationDataSource(
         val position = params.key ?: 1
 
         return api.getImageList(position)
+            .delay(5, TimeUnit.SECONDS)
             .map { response -> toLoadResult(response, position) }
             .onErrorReturn { error -> LoadResult.Error(error) }
             .subscribeOn(Schedulers.io())
