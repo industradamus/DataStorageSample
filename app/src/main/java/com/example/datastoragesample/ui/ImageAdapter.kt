@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -11,7 +12,7 @@ import com.example.datastoragesample.R
 import com.example.datastoragesample.models.Photo
 import kotlinx.android.synthetic.main.list_item_image.view.*
 
-class ImageAdapter : PagedListAdapter<Photo, ImageAdapter.ViewHolder>(DiffUtils()) {
+class ImageAdapter : PagingDataAdapter<Photo, ImageAdapter.ViewHolder>(DiffUtils()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
